@@ -1,16 +1,16 @@
 import logo from './logo.svg';
 import './App.css';
-require('dotenv').config();
 const mailchimp = require('@mailchimp/mailchimp_marketing');
 
-mailchimp.setConfig({
-  apiKey: process.env.MAIL_API,
-  server: process.env.MAIL_SERVER,
-});
 
 function App() {
 
+  mailchimp.setConfig({
+    apiKey: process.env.REACT_APP_MAIL_API,
+    server: process.env.REACT_APP_MAIL_SERVER,
+  });
   async function callPing() {
+    console.log(process.env.REACT_APP_MAIL_SERVER);
     const response = await mailchimp.ping.get();
     console.log(response);
   }
