@@ -1,0 +1,9 @@
+{
+  "background_color": "#ffffff",
+  "display": "standalone",
+  "lang": "en",
+  "name": "austin-reeve-dot-com",
+  "short_name": "austin-reeve-dot-com",
+  "start_url": "/?utm_source=web_app_manifest",
+  "orientation": "portrait"
+}

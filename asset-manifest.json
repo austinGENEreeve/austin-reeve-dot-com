@@ -1,0 +1,26 @@
+{
+  "files": {
+    "main.js": "/expo-gh-pages/static/js/main.4b732777.js",
+    "static/js/538.9313335a.js": "/expo-gh-pages/static/js/538.9313335a.js",
+    "static/media/iosBackground.jpeg": "/expo-gh-pages/static/media/iosBackground.d51671912345b4acc6b1.jpeg",
+    "static/media/marble_icon.png": "/expo-gh-pages/static/media/marble_icon.25553f73437e1d1b0686.png",
+    "static/media/Ionicons.ttf": "/expo-gh-pages/static/media/Ionicons.3517aeaa34b2f8cd8eef.ttf",
+    "static/media/x_icon.png": "/expo-gh-pages/static/media/x_icon.98171861e5dcf55f4ada.png",
+    "static/media/Feather.ttf": "/expo-gh-pages/static/media/Feather.0f5d9cede2e831f3fc80.ttf",
+    "static/media/mail_icon.png": "/expo-gh-pages/static/media/mail_icon.777ac29a191a82048eb7.png",
+    "favicon.ico": "/expo-gh-pages/favicon.ico",
+    "static/media/linkedin_icon.png": "/expo-gh-pages/static/media/linkedin_icon.b6fe5de3515687849a75.png",
+    "static/media/github_icon.png": "/expo-gh-pages/static/media/github_icon.ec336bec1f5baf790bcb.png",
+    "index.html": "/expo-gh-pages/index.html",
+    "favicon-32.png": "/expo-gh-pages/favicon-32.png",
+    "favicon-16.png": "/expo-gh-pages/favicon-16.png",
+    "manifest.json": "/expo-gh-pages/manifest.json",
+    "serve.json": "/expo-gh-pages/serve.json",
+    "main.4b732777.js.map": "/expo-gh-pages/static/js/main.4b732777.js.map",
+    "538.9313335a.js.map": "/expo-gh-pages/static/js/538.9313335a.js.map"
+  },
+  "entrypoints": [
+    "static/js/538.9313335a.js",
+    "static/js/main.4b732777.js"
+  ]
+}
