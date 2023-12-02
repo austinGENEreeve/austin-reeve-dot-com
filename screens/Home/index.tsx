@@ -1,5 +1,5 @@
-import React, { FC } from "react";
-import { View, Text, StyleSheet, Pressable } from "react-native";
+import React, { FC, useState } from "react";
+import { View, Text, StyleSheet, Image, Linking } from "react-native";
 import Animated, {
   Extrapolate,
   interpolate,
@@ -8,49 +8,76 @@ import Animated, {
   withTiming,
 } from "react-native-reanimated";
 import AppIcon from "../../components/AppIcon";
+import NavBar from "../../components/NavBar";
+import { LinearGradient } from "expo-linear-gradient";
+import Doc from "../../components/Doc";
+import Title from "../../components/Title";
+
+const BACKGROUND_IMAGE = require("../../assets/images/iosBackground.jpeg");
+const MARBLE_IMAGE = require("../../assets/images/marble_icon.png");
 
 interface HomeProps {}
 
 const Home: FC<HomeProps> = ({}) => {
-  const offset = useSharedValue(0);
+  const [title, setTitle] = useState<string>("Austin Reeve");
+  const [icon, setIcon] = useState(null);
+  const [editMode, setEditMode] = useState(false);
 
-  const iconAnimatedStyle = useAnimatedStyle(() => {
-    return {
-      transform: [
-        {
-          scale: interpolate(offset.value, [0, 1], [1, 1.1], Extrapolate.CLAMP),
-        },
-      ],
-    };
-  });
+  const _onHoverOut = () => {
+    setTitle("Austin Reeve");
+    setIcon(null);
+  };
+
+
 
   return (
     <View style={styles.body}>
+      <LinearGradient
+        colors={["transparent", "rgba(0,0,0,0.1)"]}
+        style={styles.background}
+      />
       <View style={styles.row}>
         <View style={styles.left}>
           <View style={styles.phoneBackground}>
+            <Image
+              resizeMode="cover"
+              style={styles.phoneScreen}
+              source={BACKGROUND_IMAGE}
+            />
+            <NavBar isEditMode={editMode} editComplete={() => {
+              setEditMode(false);
+            }} />
             <View style={styles.iconRow}>
-              <AppIcon />
-              <AppIcon />
-              <AppIcon />
-              <AppIcon />
+              <AppIcon
+                name="Marble"
+                onHoverIn={() => {
+                  setTitle("Marble");
+                  setIcon(MARBLE_IMAGE);
+                }}
+                onHoverOut={_onHoverOut}
+                image={MARBLE_IMAGE}
+                setEditMode={() => {
+                  setEditMode(!editMode);
+                }}
+                isEditMode={editMode}
+              />
             </View>
-            <View style={styles.iconRow}>
-              <AppIcon />
-              <AppIcon />
-              <AppIcon />
-              <AppIcon />
-            </View>
-            <View style={styles.iconRow}>
-              <AppIcon />
-              <AppIcon />
-              <AppIcon />
-              <AppIcon />
+            <View style={styles.doc}>
+              <Doc
+                setTitle={(title: string): void => {
+                  setTitle(title);
+                }}
+                onHoverOut={() => _onHoverOut()}
+                setEditMode={() => {
+                  setEditMode(!editMode);
+                }}
+                editMode={editMode}
+              />
             </View>
           </View>
         </View>
         <View style={styles.right}>
-          <Text>Left</Text>
+          <Title title={title} />
         </View>
       </View>
     </View>
@@ -66,10 +93,15 @@ const styles = StyleSheet.create({
     width: "100%",
     backgroundColor: "#fff",
   },
+  background: {
+    position: "absolute",
+    top: 0,
+    height: "100%",
+    width: "100%",
+  },
   row: {
     flexDirection: "row",
     width: "100%",
-    height: 600,
     justifyContent: "space-between",
     paddingHorizontal: 100,
   },
@@ -85,22 +117,40 @@ const styles = StyleSheet.create({
   },
   phoneBackground: {
     height: 600,
-    width: 320,
+    width: 280,
     backgroundColor: "#000",
     borderRadius: 40,
+    borderCurve: "continuous",
+    overflow: "hidden",
+    alignItems: "center",
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 10,
+    },
+    shadowOpacity: 0.4,
+    shadowRadius: 18,
+  },
+  phoneScreen: {
+    position: "absolute",
+    top: 10,
+    height: 580,
+    width: 260,
+    borderRadius: 30,
     borderCurve: "continuous",
     overflow: "hidden",
   },
   iconRow: {
     flexDirection: "row",
+    width: "100%",
     justifyContent: "space-between",
-    paddingHorizontal: 20,
-    marginTop: 40,
+    paddingHorizontal: 28,
+    marginTop: 10,
   },
-  icon: {
-    width: 60,
-    height: 60,
-    backgroundColor: "#fff",
-    borderRadius: 10,
+  doc: {
+    position: "absolute",
+    bottom: 0,
+    width: "100%",
   },
+
 });
