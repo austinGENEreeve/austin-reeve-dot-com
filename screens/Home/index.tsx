@@ -12,6 +12,8 @@ import NavBar from "../../components/NavBar";
 import { LinearGradient } from "expo-linear-gradient";
 import Doc from "../../components/Doc";
 import Title from "../../components/Title";
+import Marble from "../../components/Boards/Marble";
+import Austin from "../../components/Boards/Austin";
 
 const BACKGROUND_IMAGE = require("../../assets/images/iosBackground.jpeg");
 const MARBLE_IMAGE = require("../../assets/images/marble_icon.png");
@@ -28,8 +30,6 @@ const Home: FC<HomeProps> = ({}) => {
     setIcon(null);
   };
 
-
-
   return (
     <View style={styles.body}>
       <LinearGradient
@@ -44,9 +44,12 @@ const Home: FC<HomeProps> = ({}) => {
               style={styles.phoneScreen}
               source={BACKGROUND_IMAGE}
             />
-            <NavBar isEditMode={editMode} editComplete={() => {
-              setEditMode(false);
-            }} />
+            <NavBar
+              isEditMode={editMode}
+              editComplete={() => {
+                setEditMode(false);
+              }}
+            />
             <View style={styles.iconRow}>
               <AppIcon
                 name="Marble"
@@ -78,6 +81,8 @@ const Home: FC<HomeProps> = ({}) => {
         </View>
         <View style={styles.right}>
           <Title title={title} />
+          {title === "Marble" && <Marble />}
+          {title === "Austin Reeve" && (<Austin />)}
         </View>
       </View>
     </View>
@@ -114,6 +119,8 @@ const styles = StyleSheet.create({
   right: {
     width: "50%",
     flex: 1,
+    justifyContent: 'flex-start',
+    alignItems: "flex-start",
   },
   phoneBackground: {
     height: 600,
@@ -152,5 +159,4 @@ const styles = StyleSheet.create({
     bottom: 0,
     width: "100%",
   },
-
 });
